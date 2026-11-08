@@ -1,0 +1,78 @@
+name: Build Windows release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  windows-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install . pyinstaller
+
+      - name: Build standalone app
+        shell: pwsh
+        run: |
+          $buildRoot = Join-Path $env:RUNNER_TEMP "sysclock-build"
+          $assets = Join-Path $PWD "src\sysclock\assets"
+          $versionFile = Join-Path $PWD "version_info.txt"
+          $directories = @(
+            (Join-Path $buildRoot "work"),
+            (Join-Path $buildRoot "spec"),
+            "dist"
+          )
+          New-Item -ItemType Directory -Force -Path $directories | Out-Null
+          $arguments = @(
+            "--noconfirm", "--clean", "--onefile", "--windowed",
+            "--name", "SysClock",
+            "--distpath", "dist",
+            "--workpath", (Join-Path $buildRoot "work"),
+            "--specpath", (Join-Path $buildRoot "spec"),
+            "--icon=$(Join-Path $assets 'digital_clock_icon.ico')",
+            "--version-file", $versionFile,
+            "--add-data", "$assets;sysclock/assets",
+            "--collect-all", "tzdata",
+            "src\sysclock\__main__.py"
+          )
+          python -m PyInstaller @arguments
+
+      - name: Install Inno Setup
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build setup wizard
+        shell: pwsh
+        run: |
+          $compiler = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path -LiteralPath $compiler)) {
+            $compiler = "C:\Program Files\Inno Setup 6\ISCC.exe"
+          }
+          if (-not (Test-Path -LiteralPath $compiler)) {
+            throw "Inno Setup compiler was not found."
+          }
+          $version = $env:GITHUB_REF_NAME -replace '^v', ''
+          & $compiler "/DAppVersion=$version" "installer\SysClock.iss"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Inno Setup failed with exit code $LASTEXITCODE."
+          }
+
+      - name: Attach Windows downloads to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/SysClock-Setup.exe
+            dist/SysClock.exe

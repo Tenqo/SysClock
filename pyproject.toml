@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sysclock"
+version = "1.0.0"
+description = "A Windows world clock with an interactive time zone map."
+readme = "README.md"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = ["tzdata>=2024.1"]
+
+[project.scripts]
+sysclock = "sysclock.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sysclock = ["assets/*.ico", "assets/*.png", "assets/*.geojson"]

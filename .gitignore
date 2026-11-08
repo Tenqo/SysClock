@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.coverage
+
+# Local settings and logs
+settings.json
+*.log
+.env
+.env.*
+!.env.example
+
+# Generated builds
+build/
+dist/
+*.egg-info/
+*.spec
+
+# Edit/OS noise
+.DS_Store
+Thumbs.db
+
+# Signing credentials (never commit private keys)
+*.pfx
+*.p12
+*.pvk
+*.key
