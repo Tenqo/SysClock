@@ -85,9 +85,14 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.release_tag || github.event.release.tag_name }}
-          files: |
-            dist/SysClock-Windows-Setup.exe
-            dist/SysClock-Windows-Portable.exe
+          files: dist/SysClock-Windows-Setup.exe
+
+      - name: Save Windows portable download for ordered publishing
+        uses: actions/upload-artifact@v4
+        with:
+          name: SysClock-Windows-Portable
+          path: dist/SysClock-Windows-Portable.exe
+          if-no-files-found: error
 
   linux-release:
     needs: windows-release
@@ -129,3 +134,20 @@ jobs:
         with:
           tag_name: ${{ inputs.release_tag || github.event.release.tag_name }}
           files: dist/SysClock-Linux-x86_64.tar.gz
+
+  windows-portable-release:
+    needs: linux-release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Windows portable executable
+        uses: actions/download-artifact@v4
+        with:
+          name: SysClock-Windows-Portable
+          path: dist
+
+      - name: Attach Windows portable download to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag || github.event.release.tag_name }}
+          files: dist/SysClock-Windows-Portable.exe

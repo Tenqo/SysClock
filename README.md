@@ -35,20 +35,6 @@ SysClock for your Windows account. The command runs the install script from
 this repository; review [`scripts/install.ps1`](scripts/install.ps1) before
 running it if you want to inspect what it does.
 
-### Portable version
-
-To run the app without installing it, download
-`SysClock-Windows-Portable.exe` from the latest release's **Assets** and
-double-click it. The portable app includes its own Python runtime, map, and
-time-zone data, and works offline.
-
-Download either Windows file directly from Command Prompt:
-
-```cmd
-curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe" -o SysClock-Windows-Setup.exe
-curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Portable.exe" -o SysClock-Windows-Portable.exe
-```
-
 ### Linux portable version (x86_64)
 
 Download the Linux tarball from [GitHub Releases](https://github.com/Tenqo/SysClock/releases/latest), or from Windows Command Prompt:
@@ -68,6 +54,20 @@ tar -xzf SysClock-Linux-x86_64.tar.gz
 
 The Linux download is built for x86_64 systems compatible with Ubuntu 22.04.
 For source-code installation instead, see [Run from source](#run-from-source).
+
+### Windows portable version
+
+To run the app without installing it, download
+`SysClock-Windows-Portable.exe` from the latest release's **Assets** and
+double-click it. The portable app includes its own Python runtime, map, and
+time-zone data, and works offline.
+
+Download either Windows file directly from Command Prompt:
+
+```cmd
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe" -o SysClock-Windows-Setup.exe
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Portable.exe" -o SysClock-Windows-Portable.exe
+```
 
 ## What the app does
 
