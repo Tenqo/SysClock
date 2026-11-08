@@ -117,7 +117,7 @@ jobs:
             --distpath dist \
             --workpath "$build_root/work" \
             --specpath "$build_root/spec" \
-            --add-data "src/sysclock/assets:sysclock/assets" \
+            --add-data "$GITHUB_WORKSPACE/src/sysclock/assets:sysclock/assets" \
             --collect-all tzdata \
             src/sysclock/__main__.py
           mkdir -p package/SysClock
