@@ -58,6 +58,7 @@ jobs:
             "src\sysclock\__main__.py"
           )
           python -m PyInstaller @arguments
+          Copy-Item "dist\SysClock.exe" "dist\SysClock-Windows-Portable.exe"
 
       - name: Install Inno Setup
         run: choco install innosetup --yes --no-progress
@@ -85,8 +86,8 @@ jobs:
         with:
           tag_name: ${{ inputs.release_tag || github.event.release.tag_name }}
           files: |
-            dist/SysClock-Setup.exe
-            dist/SysClock.exe
+            dist/SysClock-Windows-Setup.exe
+            dist/SysClock-Windows-Portable.exe
 
   linux-release:
     needs: windows-release

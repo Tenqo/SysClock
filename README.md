@@ -14,7 +14,7 @@ these options requires Python or administrator access.
 ### Setup wizard (recommended)
 
 1. Open [**GitHub Releases**](https://github.com/Tenqo/SysClock/releases).
-2. Download `SysClock-Setup.exe` from the latest release's **Assets**.
+2. Download `SysClock-Windows-Setup.exe` from the latest release's **Assets**.
 3. Double-click the downloaded file, choose an install location, and optionally
    create a desktop shortcut.
 4. Launch **SysClock** from the Start menu or your desktop shortcut.
@@ -37,18 +37,32 @@ running it if you want to inspect what it does.
 
 ### Portable version
 
-To run the app without installing it, download `SysClock.exe` from the latest
-release's **Assets** and double-click it. The portable app includes its own
-Python runtime, map, and time-zone data, and works offline.
+To run the app without installing it, download
+`SysClock-Windows-Portable.exe` from the latest release's **Assets** and
+double-click it. The portable app includes its own Python runtime, map, and
+time-zone data, and works offline.
+
+From Windows Command Prompt, download the Windows installer with:
+
+```cmd
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe" -o SysClock-Windows-Setup.exe
+```
 
 Downloads are available after the project owner publishes a GitHub Release.
 
 ### Linux portable version (x86_64)
 
-Download `SysClock-Linux-x86_64.tar.gz` from the latest release's **Assets**,
-extract it, and run the `SysClock` executable:
+From Windows Command Prompt, download the Linux archive with:
+
+```cmd
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
+```
+
+The Linux archive can be downloaded from Windows, but it must be run on Linux.
+On an x86_64 Linux system, download, extract, and run it with:
 
 ```bash
+curl -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
 tar -xzf SysClock-Linux-x86_64.tar.gz
 ./SysClock/SysClock
 ```
@@ -127,9 +141,9 @@ pyinstaller @buildArguments
 
 The portable executable is created in `dist`. To build the setup wizard too,
 install Inno Setup 6 and compile `installer\SysClock.iss` after building
-`dist\SysClock.exe`. Publishing a GitHub Release triggers the Windows release
-workflow, which builds and attaches both `SysClock-Setup.exe` and
-`SysClock.exe`.
+`dist\SysClock.exe`. Publishing a GitHub Release triggers the release workflow,
+which builds the Windows installer, Windows portable executable, and Linux
+x86_64 archive.
 
 ## Project and license
 
