@@ -21,7 +21,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag || github.event.release.tag_name }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && 'main' || github.event.release.tag_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -97,7 +97,7 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.release_tag || github.event.release.tag_name }}
+          ref: ${{ github.event_name == 'workflow_dispatch' && 'main' || github.event.release.tag_name }}
 
       - name: Install Linux build dependencies
         run: |
@@ -113,16 +113,16 @@ jobs:
           mkdir -p "$build_root/work" "$build_root/spec" dist
           .venv/bin/python -m PyInstaller \
             --noconfirm --clean --onefile --windowed \
-            --name SysClock \
+            --name SysClock-Linux-x86_64 \
             --distpath dist \
             --workpath "$build_root/work" \
             --specpath "$build_root/spec" \
             --add-data "$GITHUB_WORKSPACE/src/sysclock/assets:sysclock/assets" \
             --collect-all tzdata \
             src/sysclock/__main__.py
-          mkdir -p package/SysClock
-          cp dist/SysClock README.md LICENSE package/SysClock/
-          tar -czf dist/SysClock-Linux-x86_64.tar.gz -C package SysClock
+          mkdir -p package/SysClock-Linux-x86_64
+          cp dist/SysClock-Linux-x86_64 README.md LICENSE package/SysClock-Linux-x86_64/
+          tar -czf dist/SysClock-Linux-x86_64.tar.gz -C package SysClock-Linux-x86_64
 
       - name: Attach Linux download to the release
         uses: softprops/action-gh-release@v2

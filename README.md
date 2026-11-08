@@ -42,32 +42,32 @@ To run the app without installing it, download
 double-click it. The portable app includes its own Python runtime, map, and
 time-zone data, and works offline.
 
-From Windows Command Prompt, download the Windows installer with:
+Download either Windows file directly from Command Prompt:
 
 ```cmd
 curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe" -o SysClock-Windows-Setup.exe
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Portable.exe" -o SysClock-Windows-Portable.exe
 ```
-
-Downloads are available after the project owner publishes a GitHub Release.
 
 ### Linux portable version (x86_64)
 
-From Windows Command Prompt, download the Linux archive with:
+Download the Linux tarball from [GitHub Releases](https://github.com/Tenqo/SysClock/releases/latest), or from Windows Command Prompt:
 
 ```cmd
 curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
 ```
 
-The Linux archive can be downloaded from Windows, but it must be run on Linux.
-On an x86_64 Linux system, download, extract, and run it with:
+The tarball can be downloaded on Windows, but the app runs on Linux, not
+Windows. On an x86_64 Linux system, download, extract, and run it with:
 
 ```bash
 curl -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
 tar -xzf SysClock-Linux-x86_64.tar.gz
-./SysClock/SysClock
+./SysClock-Linux-x86_64/SysClock-Linux-x86_64
 ```
 
 The Linux download is built for x86_64 systems compatible with Ubuntu 22.04.
+For source-code installation instead, see [Run from source](#run-from-source).
 
 ## What the app does
 
