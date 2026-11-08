@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
-$installerUrl = "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe"
-$installerPath = Join-Path $env:TEMP "SysClock-Windows-Setup-$([guid]::NewGuid().ToString('N')).exe"
+$installerUrl = "https://github.com/Tenqo/SysClock/releases/latest/download/01-Windows-SysClock-Setup.exe"
+$installerPath = Join-Path $env:TEMP "01-Windows-SysClock-Setup-$([guid]::NewGuid().ToString('N')).exe"
 
 try {
     Write-Host "Downloading SysClock..."

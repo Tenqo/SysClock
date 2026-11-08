@@ -14,7 +14,7 @@ these options requires Python or administrator access.
 ### Setup wizard (recommended)
 
 1. Open [**GitHub Releases**](https://github.com/Tenqo/SysClock/releases).
-2. Download `SysClock-Windows-Setup.exe` from the latest release's **Assets**.
+2. Download `01-Windows-SysClock-Setup.exe` from the latest release's **Assets**.
 3. Double-click the downloaded file, choose an install location, and optionally
    create a desktop shortcut.
 4. Launch **SysClock** from the Start menu or your desktop shortcut.
@@ -40,15 +40,15 @@ running it if you want to inspect what it does.
 Download the Linux tarball from [GitHub Releases](https://github.com/Tenqo/SysClock/releases/latest), or from Windows Command Prompt:
 
 ```cmd
-curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/02-Linux-SysClock-x86_64.tar.gz" -o 02-Linux-SysClock-x86_64.tar.gz
 ```
 
 The tarball can be downloaded on Windows, but the app runs on Linux, not
 Windows. On an x86_64 Linux system, download, extract, and run it with:
 
 ```bash
-curl -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Linux-x86_64.tar.gz" -o SysClock-Linux-x86_64.tar.gz
-tar -xzf SysClock-Linux-x86_64.tar.gz
+curl -L "https://github.com/Tenqo/SysClock/releases/latest/download/02-Linux-SysClock-x86_64.tar.gz" -o 02-Linux-SysClock-x86_64.tar.gz
+tar -xzf 02-Linux-SysClock-x86_64.tar.gz
 ./SysClock-Linux-x86_64/SysClock-Linux-x86_64
 ```
 
@@ -58,15 +58,15 @@ For source-code installation instead, see [Run from source](#run-from-source).
 ### Windows portable version
 
 To run the app without installing it, download
-`SysClock-Windows-Portable.exe` from the latest release's **Assets** and
+`03-Windows-SysClock-Portable.exe` from the latest release's **Assets** and
 double-click it. The portable app includes its own Python runtime, map, and
 time-zone data, and works offline.
 
 Download either Windows file directly from Command Prompt:
 
 ```cmd
-curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Setup.exe" -o SysClock-Windows-Setup.exe
-curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/SysClock-Windows-Portable.exe" -o SysClock-Windows-Portable.exe
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/01-Windows-SysClock-Setup.exe" -o 01-Windows-SysClock-Setup.exe
+curl.exe -L "https://github.com/Tenqo/SysClock/releases/latest/download/03-Windows-SysClock-Portable.exe" -o 03-Windows-SysClock-Portable.exe
 ```
 
 ## What the app does
