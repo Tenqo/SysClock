@@ -1,7 +1,8 @@
 # SysClock
 
 SysClock is a Windows world clock with a live map, searchable cities, live time
-zones, and customizable time and appearance.
+zones, and customizable time and appearance. Windows and Linux downloads are
+available from [GitHub Releases](https://github.com/Tenqo/SysClock/releases).
 
 ![Digital Clock showing the searchable world map](docs/screenshots/world-clock.png)
 
@@ -41,6 +42,18 @@ release's **Assets** and double-click it. The portable app includes its own
 Python runtime, map, and time-zone data, and works offline.
 
 Downloads are available after the project owner publishes a GitHub Release.
+
+### Linux portable version (x86_64)
+
+Download `SysClock-Linux-x86_64.tar.gz` from the latest release's **Assets**,
+extract it, and run the `SysClock` executable:
+
+```bash
+tar -xzf SysClock-Linux-x86_64.tar.gz
+./SysClock/SysClock
+```
+
+The Linux download is built for x86_64 systems compatible with Ubuntu 22.04.
 
 ## What the app does
 
@@ -121,8 +134,8 @@ workflow, which builds and attaches both `SysClock-Setup.exe` and
 ## Project and license
 
 The original SysClock software is licensed under the
-[GNU General Public License v3.0](LICENSE) (`GPL-3.0-only`). Copyright © 2026
-Tenqo. You may use, modify, and redistribute the original software under the
+[GNU General Public License v3.0](LICENSE) (`GPL-3.0-only`). Copyright © 2026 Tenqo.
+ You may use, modify, and redistribute the original software under the
 license terms. When distributing the app, include the corresponding source
 code and license.
 
