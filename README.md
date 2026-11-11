@@ -1,3 +1,4 @@
+# Sysclock will not be updated anymore the project is discontinued 
 # SysClock
 
 SysClock is a Windows world clock with a live map, searchable cities, live time
